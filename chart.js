@@ -1,18 +1,17 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-function myFunction() {
+	function myFunction() {
 	  var x = document.getElementById("myLinks");
-	  if (x.style.display === "block") {
+	  if (x.style.display === "flex") {
 	    x.style.display = "none";
 	  } else {
-	    x.style.display = "block";
+	    x.style.display = "flex";
 	  }
 	}
 
-	Chart.defaults.global.defaultFontSize = 34;
+	Chart.defaults.global.defaultFontSize = 16;
 	Chart.defaults.global.defaultFontFamily = "brandon-grotesque, sans-serif";
-	Chart.defaults.global.title.fontSize= 42;
+	Chart.defaults.global.title.fontSize= 20;
 	Chart.defaults.global.title.fontColor="white";
+
 	new Chart(document.getElementById("fuel-chart"), {
 	  type: 'doughnut',
 	  data: {
@@ -32,7 +31,7 @@ function myFunction() {
 	  options: {
 	    title: {
 	      display: true,
-	      text: 'FUEL',
+	
 	      position:'top',
 	      cutoutPercentage: 50,
 	    }
@@ -87,14 +86,14 @@ function myFunction() {
 	});
 
 	new Chart(document.getElementById("food-chart"), {
-	  type: 'horizontalBar',
+	  type: 'bar',
 	  data: {
-	    labels: ["Water","Food"],
+	    labels: ['Water', 'Food'],
 	    datasets: [{ 
-	        data: [100,],
-	        label: "Supplies",
+	        data: [100,200,54],
+	        label: "Food", 
 	        borderColor:"#6BCEED",
-	        borderWidth:"2",
+	        borderWidth:"5",
 	        backgroundColor:"#6BCEED",
 	        fill: false,
 	      },
@@ -108,3 +107,5 @@ function myFunction() {
 	    }
 	  }
 	});
+
+

@@ -1,26 +1,18 @@
  @import url("https://use.typekit.net/edb2qog.css");
 
+/* Prevents box from increasing in size when padding or border is added */
+html { box-sizing: border-box; }
+*, 
+*:before, 
+*:after { box-sizing: inherit; }
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-/*Universal*/
 body{
-	display: flex;
-	flex-wrap: wrap;
-	background-color: #181C1F;
+	margin: 0 auto;
 	font-family: brandon-grotesque, sans-serif;
 	color:white;
 	text-transform: uppercase;
-	justify-content: center;
-}
-
-a{
-	color: #181C1F;
-	text-decoration: none;
+	background-color: #181C1F;
+  height: 100%;
 }
 
 h1{
@@ -38,103 +30,191 @@ h2{
 	line-height: 20px;
 	letter-spacing: 0.04em;
 }
-header{
-	background: rgb(66,74,81);
-	background: linear-gradient(94deg, rgba(66,74,81,1) 25%, rgba(37,44,51,1) 94%);
-	width: 100%;
-	height: 120px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	align-items: center;
+
+h3{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	margin-top:25px;
 }
 
-.menu{
+.sideMenu{
+	background-color: blue;
+	float:left;
+	height: 900px;	
+}
+}
+
+
+.row { position: relative; }
+
+.row::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Columns */
+.col { 
+  width: auto; 
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+aside{
+  display: none;
+  height:900px;
+  background-color:white;
+
+}
+
+aside> ul > li{
+  color:#181C1F;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.15em;
+  margin:20px 0 20px 0;
+}
+
+aside> ul > li > img{
+  width: 20%;
+
+  }
+
+header{
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	margin-left: -50px;
+	align-items:center;
+	background: rgb(66,74,81);
+	background: linear-gradient(94deg, rgba(66,74,81,1) 25%, rgba(37,44,51,1) 94%);
+}
+
+header > .menu{
+	margin-right:25%;
 }
 
 .journeyInfo{
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: center;
-	align-items: center;
-	font-size:12px;
-	margin:10px;
 }
 
 .info{
-	margin: 20px;
+	margin:5px;
 }
 
-
-.flexContainer{
-	margin-top:50px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items:center;
+.info h2{
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.15em;
 }
 
-article{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;		
-	align-items: center;
-	margin-top:45px;
+.info p{
+	font-weight: 390;
+	font-size: 12px;
+	line-height: 17px;
+	text-align: center;
 }
 
-
-
-
-
-/* Mobile Styles */
+#suppliesChart{}
+/* Small Devices */
 @media only screen and (max-width: 400px) {
-  body {
-     /* Red */
+  .sm-1 { width: 10%; }
+  .sm-2 { width: 20%; }
+  .sm-3 { width: 30%; }
+  .sm-4 { width: 40%; }
+  .sm-5 { width: 50%; }
+  .sm-6 { width: 60%; }
+  .sm-7 { width: 70%; }
+  .sm-8 { width: 80%; }
+  .sm-9 { width: 90%; }
+  .sm-10 { width: 100%; }
+
+
+ .article > .chartStyle > #fuel-chart{
+  	width: 60% !important;
+  	height: 60% !important;	
   }
-
-  .chartStyle #line-chart{
-	width: 250px !important;
-	height: 450px !important;
-	
 }
 
-	
-
-	  #myLinks{
-	  	display: none;
-	  }
-}
-
-/* Tablet Styles */
+/* Medium Devices */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-  body {
-    background-color: #F5CF8E; /* Yellow */
-  }
+  .md-1 { width: 10%; }
+  .md-2 { width: 20%; }
+  .md-3 { width: 30%; }
+  .md-4 { width: 40%; }
+  .md-5 { width: 50%; }
+  .md-6 { width: 60%; }
+  .md-7 { width: 70%; }
+  .md-8 { width: 80%; }
+  .md-9 { width: 90%; }
+  .md-10 { width: 100%; }
 
-
-
-  #myLinks{
-  	display: none;
-  }
+  header > .menu{
+	margin-right:40%;
 }
 
-/* Desktop Styles */
+.accel{
+  float: right;
+}
+
+.supplies{
+  float: left;
+}
+
+
+
+}
+
+/* Large Devices */
 @media only screen and (min-width: 961px) {
-  body {
-    background-color: #B2D6FF; /* Blue */
-  }
+  .lg-1 { width: 10%; }
+  .lg-2 { width: 20%; }
+  .lg-3 { width: 30%; }
+  .lg-4 { width: 40%; }
+  .lg-5 { width: 50%; }
+  .lg-6 { width: 60%; }
+  .lg-7 { width: 70%; }
+  .lg-8 { width: 80%; }
+  .lg-9 { width: 90%; }
+  .lg-10 { width: 100%; }
+
+
+.menu{
+	display: none;
+}
+
+aside{
+  display: block;
+}
+
+.accel{
+	float: right;
+}
+
+.supplies{
+	float: left;
+}
+
+
+
 }
 
 
 
 
 
-
+/*Intro Screen */
 .fade-out {
   position: absolute;
   z-index: 9999;
