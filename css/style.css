@@ -1,11 +1,13 @@
+  /*IMPORT FONT */
  @import url("https://use.typekit.net/edb2qog.css");
 
-/* Prevents box from increasing in size when padding or border is added */
+
 html { box-sizing: border-box; }
 *, 
 *:before, 
 *:after { box-sizing: inherit; }
 
+/*UNIVERSAL STYLING*/
 body{
 	margin: 0 auto;
 	font-family: brandon-grotesque, sans-serif;
@@ -14,7 +16,6 @@ body{
 	background-color: #181C1F;
   height: 100%;
 }
-
 h1{
 	font-style: normal;
 	font-weight: 420;
@@ -22,7 +23,6 @@ h1{
 	line-height: 29px;
 	letter-spacing: 0.15em;
 }
-
 h2{
 	font-style: normal;
 	font-weight: 390;
@@ -30,7 +30,6 @@ h2{
 	line-height: 20px;
 	letter-spacing: 0.04em;
 }
-
 h3{
 	font-style: normal;
 	font-weight: bold;
@@ -41,24 +40,21 @@ h3{
 	text-transform: uppercase;
 	margin-top:25px;
 }
-
 .sideMenu{
 	background-color: blue;
 	float:left;
 	height: 900px;	
 }
-}
 
-
+/*GRID SETUP*/
+/*ROWS*/
 .row { position: relative; }
-
 .row::after {
   content: "";
   display: block;
   clear: both;
 }
-
-/* Columns */
+/* COLUMNS */
 .col { 
   width: auto; 
   float: left;
@@ -66,14 +62,14 @@ h3{
   padding-right: 15px;
 }
 
+/*SIDEMENU - DISABLED ON SMALLER SCREENS*/
 aside{
   display: none;
   height:900px;
   background-color:white;
-
 }
-
-aside> ul > li{
+aside>  ul> li{
+  display: flex;
   color:#181C1F;
   font-style: normal;
   font-weight: bold;
@@ -81,13 +77,16 @@ aside> ul > li{
   line-height: 20px;
   letter-spacing: 0.15em;
   margin:20px 0 20px 0;
+  list-style: none;
 }
-
+ul{
+  margin-left: -20px;
+}
 aside> ul > li > img{
-  width: 20%;
-
+  float: left;
+  width: 12%;
+  margin-right: 10px;
   }
-
 header{
 	display: flex;
 	flex-direction: row;
@@ -95,22 +94,18 @@ header{
 	background: rgb(66,74,81);
 	background: linear-gradient(94deg, rgba(66,74,81,1) 25%, rgba(37,44,51,1) 94%);
 }
-
 header > .menu{
 	margin-right:25%;
 }
-
 .journeyInfo{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
 }
-
 .info{
 	margin:5px;
 }
-
 .info h2{
 	text-align: center;
 	font-weight: bold;
@@ -118,16 +113,13 @@ header > .menu{
 	line-height: 20px;
 	letter-spacing: 0.15em;
 }
-
 .info p{
 	font-weight: 390;
 	font-size: 12px;
 	line-height: 17px;
 	text-align: center;
 }
-
-#suppliesChart{}
-/* Small Devices */
+/* MOBILE */
 @media only screen and (max-width: 400px) {
   .sm-1 { width: 10%; }
   .sm-2 { width: 20%; }
@@ -140,14 +132,13 @@ header > .menu{
   .sm-9 { width: 90%; }
   .sm-10 { width: 100%; }
 
-
  .article > .chartStyle > #fuel-chart{
   	width: 60% !important;
   	height: 60% !important;	
   }
 }
 
-/* Medium Devices */
+/*TABLET & SMALL DESKTOP */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
   .md-1 { width: 10%; }
   .md-2 { width: 20%; }
@@ -172,11 +163,9 @@ header > .menu{
   float: left;
 }
 
-
-
 }
 
-/* Large Devices */
+/* LARGE DESKTOP*/
 @media only screen and (min-width: 961px) {
   .lg-1 { width: 10%; }
   .lg-2 { width: 20%; }
@@ -188,7 +177,6 @@ header > .menu{
   .lg-8 { width: 80%; }
   .lg-9 { width: 90%; }
   .lg-10 { width: 100%; }
-
 
 .menu{
 	display: none;
@@ -205,16 +193,9 @@ aside{
 .supplies{
 	float: left;
 }
-
-
-
 }
 
-
-
-
-
-/*Intro Screen */
+/*INTROSCREEN
 .fade-out {
   position: absolute;
   z-index: 9999;
@@ -223,8 +204,6 @@ aside{
   width:100%;
   animation: fadeOut ease 4s;
   animation-fill-mode: forwards;
-
- 
 }
 
 .fade-out img{
@@ -235,13 +214,10 @@ aside{
 @keyframes fadeOut {
   0% {
     opacity:100;
-   
     
   }
   100% {
     opacity:0;
- 
-
   }
 
- 
+*/
