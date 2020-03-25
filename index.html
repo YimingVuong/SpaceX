@@ -5,223 +5,117 @@
 
 	<meta charset='utf-8'/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SpaceX Dashboard</title>
+	<title>Mars Domes - World Clock</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
 	</head>
-	<body>
-	<!-- 		<div class= "fade-out">
-		<img src="img/SpaceXLogo.png"></img>
-	</div> -->
-		<div class="row">
-			<header class="col sm-10 md-10 lg-10">
-				<div class="menu">
-					 <a id="hamburgerMenu" href="javascript:void(0);" class="icon" onclick="myFunction()"><img src="img/Menu.png"></img></a>
-				</div>
-				<div class="ship">
-					<h1>Falcon 9</h1>
-					<h2>Destination <strong>Mars</strong></h2>
-				</div>
-			</header>
-	
-			<aside class="col sm-10 md-10 lg-2">
-				<ul>
-					<li><img src="img/vector.svg">dasdhboard</li>
-					<li><img src="img/vector-1.svg">tools</li>
-					<li><img src="img/vector-2.svg">assistance</li>
-					<li><img src="img/vector-3.svg">journey info</li>
-					<li><img src="img/vector-4.svg">spacex</li>
-					<li><img src="img/vector-5.svg">app settings</li>
-					<li><img src="img/vector-6.svg">about </li>
-				</ul>
-			</aside>
+	<body onload="backgroundChange()">
+		<div class="row fade-in">
+			<div class="flexContainer">
+				<main class="col sm-10 md-10 lg-8">
 
+					<div id=stars></div>
 
-		<main class="col sm-10 md-10 lg-8">
-			<div class="tags col sm-10 md-10 lg-10">
+					<h1>earth</h1>
+					<h2 id="greetings"></h2>
+
+					<p id="date"></p>
+					<div id="clock"></div>
+				</main>
 			</div>
-		    <div class="journeyInfo col sm-10 md-10 lg-10">
-				<div class="info">
-					<h2>eta</h2>
-					<p>21/02/2030</p>
-				</div>
-				<div class="info">
-					<h2>distance</h2>
-					<p>54mln km</p>
-				</div>
-				<div class="info">
-					<h2>speed</h2>
-					<p>96.000 km/h</p>
-				</div>
-			</div>
-		    <div class="col sm-10 md-5 lg-5">
-		    	<article>
-					<h3>Spacecraft Information</h3>
-					<div id="fuelChart"></div>
-				</article>
-		  	</div>
-		  	<div class="col sm-10 md-5 lg-5">
-		    	<article>
-					<h3>Gforce around the spacecraft</h3>
-					<div id="gforceChart"></div>
-				</article>
-		  	</div>
-		  	<div class="accel col sm-10 md-5 lg-5">
-		    	<article>
-					<h3>Acceleration</h3>
-					<div id="accelChart"></div>
-				</article>
-		  	</div>
-		  	<div class="supplies col sm-10 md-5 lg-5">
-		    	<article>
-					<h3>Supplies</h3>
-					<div id="suppliesChart"></div>
-				</article>
-		  	</div>
-		  </div>
 		</div>
-	</main>
 	</body>
 
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script type="text/javascript">
-	var options = {
-          series: [70],
-          colors:['#81B49B'],
-          chart: {
-          height: 300,
-          type: 'radialBar',
-        },
-        plotOptions: {
-          radialBar: {
-            hollow: {
-              size: '70%',
-            }
-          },
-        },
-        labels: ['3923KG'],
-        };
-        var chart = new ApexCharts(document.querySelector("#fuelChart"), options);
-        chart.render();
+	<script type="text/javascript">
+		//Get hours for greetings
+		var d = new Date();
+	    var hrs = d.getHours();
+	    var greet;
+	    if (hrs < 12)
+	        greet = 'Good Morning.';
+	    else if (hrs >= 12 && hrs <= 17)
+	        greet = 'Good Afternoon.';
+	    else if (hrs >= 17 && hrs <= 24)
+	        greet = 'Good Evening.';
 
-        var options = {
-		  chart: {
-		  		toolbar:{
-		  			show: false,
-		  		},
-		    height: 280,
-		    type: "area",
-		    foreColor:"#ccc	",
-		  },
-		  dataLabels: {
-		    enabled: false,
-		  },
-		  colors: ["#81B49B"],
-		  stroke: {
-		  	curve: 'straight',
-		  	width: 1,
-		  },
-		  series: [
-		    {
-		      name: "Series 1",
-		      data: [100,65,251,121,453,321,231,754]
-		    }
-		  ], 
-		  xaxis: {
-		    categories: [
-		      "01 Jan",
-		      "02 Jan",
-		      "03 Jan",
-		      "04 Jan",
-		      "05 Jan",
-		      "06 Jan",
-		      "07 Jan"
-		    ], 
-          },
-          yaxis:{
-          	  style: {
-              colors: ['#FFFFFF',],
-              fontSize: '12px',
-              fontFamily: 'Helvetica, Arial, sans-serif',
-              fontWeight: 400,
-              cssClass: 'apexcharts-xaxis-label',
-          }
+	    // Get day in words for greetings
+	    var weekday = new Array(7);
+			weekday[0] = "Sunday";
+		 	weekday[1] = "Monday";
+			weekday[2] = "Tuesday";
+			weekday[3] = "Wednesday";
+		 	weekday[4] = "Thursday";
+			weekday[5] = "Friday";
+			weekday[6] = "Saturday";
+		var day = weekday[d.getDay()];
+
+		// Get date in number 
+		var dayInNumbers = d.getDate();
+
+		//Get month in words for greetings
+		var month = new Array(12);
+			month[0] = "January";
+			month[1] = "February";
+			month[2] = "March";
+			month[3] = "April";
+			month[4] = "May";
+			month[5] = "June";
+			month[6] = "July";
+			month[7] = "August";
+			month[8] = "September";
+			month[9] = "October";
+			month[10] = "November";
+			month[11] = "December";
+		var m = month[d.getMonth()];
+
+		//Get fullyear 
+		var year = d.getFullYear();
+		//Write greetings 
+	    document.getElementById('greetings').innerHTML =
+	        greet +" " + 'Its ';  
+		
+		 document.getElementById('date').innerHTML = 
+		 	day + "," + " " + dayInNumbers + " " + m + " " + year +" on earth";
+
+		//CLock
+	  function currentTime() {
+		  var date = new Date(); 
+		  var hour = date.getHours();
+		  var min = date.getMinutes();
+		  var sec = date.getSeconds();
+		  hour = updateTime(hour);
+		  min = updateTime(min);
+		  sec = updateTime(sec);
+		  document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; 
+		    var t = setTimeout(function(){ currentTime() }, 1000);
+		}
+
+		function updateTime(k) {
+		  if (k < 10) {
+		    return "0" + k;
 		  }
-		};
+		  else {
+		    return k;
+		  }
+		}
 
-		var chart = new ApexCharts(document.querySelector("#gforceChart"), options);
+		currentTime(); 
 
-		chart.render();
-
-		var options = {
-          series: [{
-            name: "Acceleration",
-            data: [10, 120, 115, 204,342,342,310,290]
-        }],
-          chart: {
-          	toolbar:{
-          		show:false,
-          	},
-          height: 350,
-          type: 'line',
-          foreColor:'#ccc',
-          zoom: {
-            enabled: false
-          }
-        },
-        colors: ["#6BCEED"],
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'straight',
-          width: 3,
-        },
-        xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#accelChart"), options);
-        chart.render();
-
-        var options = {
-          series: [{
-          data: [400, 430, 448,]
-        }],
-          chart: {
-         	toolbar:{
-         		show:false,
-         	},
-          type: 'bar',
-          height: 350,
-          foreColor: '#ccc',
-
-        },
-
-        plotOptions: {
-          bar: {
-          	distributed: true,
-            horizontal: true,
-            backgroundBarColors: ["#8DDDDD"],
-            backgroundBarOpacity: 1,
-        },
-
-          
-        },
-             colors: ['#9DFDCF','#8DDDDD', '#8DA3DD',],
-        dataLabels: {
-          enabled: false
-        },
-        xaxis: {
-          categories: ['Food', 'Water', 'Medicines'
-          ],
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#suppliesChart"), options);
-        chart.render();
-</script>
+	function backgroundChange(){
+	var d = new Date();
+	var n = d.getHours();
+	if (n > 19 || n < 6)
+	  // If time is after 7PM or before 6AM, apply night theme to ‘body’
+	  document.body.className = "night" ;
+	else if (n > 16 && n < 19)
+	  // If time is between 4PM – 7PM sunset theme to ‘body’
+	  document.body.className = "noon";
+	else
+	  // Else use ‘day’ theme
+	  document.body.className = "day";
+};
 
 
+
+	</script>
 </html>
